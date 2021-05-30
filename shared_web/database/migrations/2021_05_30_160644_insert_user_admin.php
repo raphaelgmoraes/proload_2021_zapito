@@ -32,7 +32,6 @@ class InsertUserAdmin extends Migration
      */
     public function down()
     {
-        $email = env('USER_EMAIL', 'admin@admin.com.br');
-        DB::delete('delete users where email = ?', [$email]);
+        DB::table('users')->delete();
     }
 }
