@@ -7,7 +7,7 @@ hora=$(date +"%H:%M:%S")
 
 
 echo "###############################################################################$" 
-echo "#                        Script laravel 8                                      $" 
+echo "#                        Script laravel                                        $" 
 echo "#                                                                              $" 
 echo "#                     TESTE :: ZAPITO PROLOAD 2021                             $" 
 echo "#                                                                              $" 
@@ -18,24 +18,24 @@ echo "#                                                                         
 echo "#                                                                              $" 
 echo "###############################################################################$\n" 
 sleep 2
-echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" 
-echo "deletando instalação do laravel se exixtir !       "
-echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" 
-sleep 5;
+#echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" 
+#echo "deletando instalação do laravel se exixtir !       "
+#echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" 
+#sleep 5;
 
-DIR="shared_web"
-if [ -d "$DIR" ]; then
-  
-  echo "Removendo o diretório: ${DIR} "
-  rm -rf "$DIR"
-  echo "Criando o diretório: ${DIR} "
-  mkdir -p $DIR
-else
-  
-  echo "Diretório: ${DIR} não existe, estamos criando agora ... !"
-  mkdir -p $DIR
-  exit 1
-fi
+#DIR="shared_web"
+#if [ -d "$DIR" ]; then
+#  
+#  echo "Removendo o diretório: ${DIR} "
+#  rm -rf "$DIR"
+#  echo "Criando o diretório: ${DIR} "
+#  mkdir -p $DIR
+#else
+#  
+#  echo "Diretório: ${DIR} não existe, estamos criando agora ... !"
+#  mkdir -p $DIR
+#  exit 1
+#fi
 
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" 
 echo "Construindo o projeto com os arquivos Dockfile e docker-composer.yml.            "  
@@ -47,16 +47,16 @@ echo "Estrutura Docker (Containers), criados com sucesso!                       
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" 
 sleep 5;
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" 
-echo "Acessando, instalando laravel8 e baxkpack : proload_2021_zapito_app_1 bash       "  
+echo "Acessando, instalando laravel7 e baxkpack : proload_2021_zapito_app_1 bash       "  
 echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" 
 sleep 2
 docker exec -it proload_2021_zapito_app_1 /bin/bash -c \
     "sleep 2;
         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
-        echo 'instalação Laravel 8! :)       ';  
+        echo 'instalação Laravel 7! :)       ';  
         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n'; 
         sleep 5;
-        composer create-project --prefer-dist laravel/laravel .;
+        composer create-project --prefer-dist laravel/laravel ./ '7.*';
         php artisan key:generate;
         sleep 5;
         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
@@ -82,6 +82,8 @@ docker exec -it proload_2021_zapito_app_1 /bin/bash -c \
         composer require laracasts/generators --dev;
         php artisan backpack:install;
         composer require --dev laravel-shift/blueprint;
+        composer require guzzlehttp/guzzle;       
+        
         sleep 5;
         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
         echo 'INSTALAÇÂO REALIZADA COM SUCESSO :)        ';  
