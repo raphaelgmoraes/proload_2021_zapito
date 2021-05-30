@@ -14,10 +14,10 @@ class InsertRecipient extends Migration
      */
     public function up()
     {
-        $first_name = "Monique Tavares de Paiva";
-        $last_name = "Tavares de Paiva";
-        $email = "moniquetavarespaiva@admin.com.br";
-        $phone = "21992023508";
+        $first_name = "Monique";
+        $last_name = "Petris";
+        $email = "monique55@admin.com.br";
+        $phone = "11998756415";
         $msg = "Olá Teste !";
 
         DB::table('recipients')->insert([
