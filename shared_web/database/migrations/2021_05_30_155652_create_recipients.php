@@ -17,7 +17,7 @@ class CreateRecipients extends Migration
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
-            $table->integer('phone_number')->unique();
+            $table->string('phone_number')->unique();
             $table->boolean('status')->nullable()->default(false);
             $table->timestamps();
         });
