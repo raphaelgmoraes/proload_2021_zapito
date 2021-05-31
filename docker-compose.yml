@@ -6,7 +6,7 @@ services:
       dockerfile: .docker/Dockerfile
     image: 'apache2-custom-zapito'
     ports:
-      - 8080:80
+      - 8081:80
     volumes:
       - ./shared_web:/var/www/html
   db:
