@@ -77,7 +77,7 @@ class ZapitoController extends BaseServiceController
             /**
              * SOMENTE ENVIA SE USER RECIPIENT TIVER STATUS TRUE
              */
-            if ($recipient->status) {
+            if ($recipient->active == 1) {
             
                 /**
                  * ########################################
