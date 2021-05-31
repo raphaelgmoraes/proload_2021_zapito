@@ -4,10 +4,13 @@ namespace App\Http\Controllers\API\Zapito;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use \App\Http\Controllers\Services\FeedRss\FeedRssController as Feed;
+use \App\Models\Recipients;
 
 
 class ZapitoController extends BaseServiceController
 {
+    
     /**
      * ##############
      * #### BOTS ####
@@ -55,22 +58,46 @@ class ZapitoController extends BaseServiceController
     {
         $random_number = mt_rand(100, 200);
         $endpoint = "messages";
-        /** 
-         * Msg de Teste da Plataforma
+        
+        /**
+         * FEED de Notícias :: Update a cada 1 minuto
          */
-        $data =  [
-            "data" => [
-                [
-                    "phone" => "21996514273",
-                    "message" => "
-                        Integração API ZApito
-                        \n Mensagem de teste Raphael
-                        \n Teste Number aleatório".$random_number ,
-                    "test_mode" => true
+        $feed_data = new Feed();
+        $feed = $feed_data->getFeeds();
+
+        $notice = $feed["title"];
+        $link = $feed["link"];
+        /**
+         * ###########################################
+         * ####   GET data User Recipient Model   ####
+         * ###########################################
+         */        
+        $recipients = Recipients::all();
+        foreach ($recipients as $recipient) {
+            /**
+             * ########################################
+             * ####   Msg de Teste da Plataforma   ####
+             * ########################################
+             */
+            $data =  [
+                "data" => [
+                    [
+                        "phone" => $recipient->phone_number,
+                        "message" => "
+                            Zapito API:: Notícias do Brasil e do Mundo! \n\n \n Olá $recipient->first_name !\n\n Informe do dia:\n\n $notice \n\n Acesse: $link \n\n\n By: Raphael Moraes
+                        ",
+                            
+                        "test_mode" => true
+                    ]
                 ]
-            ]
-        ];
-        return $this->post($endpoint, $data);
+            ];
+            /**
+             *##################################################################################
+            * $data["data"][0]["error"] = false :: Informa que a msg foi efetuada com sucesso
+            * ##################################################################################
+            */
+            return $this->post($endpoint, $data);
+        }
     }
 
     /**
@@ -78,15 +105,12 @@ class ZapitoController extends BaseServiceController
      * Função executa o envio via http com o metodo GET em Route
      * Route::get('/api/massive', [ZapitoController::class, 'massive']);
      * ##################################################################################
-     * 
-     * ##################################################################################
-     * $data["data"][0]["error"] = false :: Informa que a msg foi efetuada com sucesso
-     * ##################################################################################
      */
     public function massive()
     {   
         $this->sendMessages();
-
+        
+        
     }
 
 

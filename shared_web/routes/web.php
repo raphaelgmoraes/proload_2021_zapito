@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 // use APP\Http\Controllers\API\Zapito\BaseServiceController;
 use \App\Http\Controllers\API\Zapito\BaseServiceController;
 use \App\Http\Controllers\API\Zapito\ZapitoController;
+use \App\Http\Controllers\Services\FeedRss\FeedRssController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +40,13 @@ Route::get('/api/messages/{id}', [ZapitoController::class, 'getMessages']);
 Route::get('/api/massive', [ZapitoController::class, 'massive']);
 
 Route::post('/api/messages', [ZapitoController::class, 'sendMessages']);
+
+
+/** 
+ * #######################
+ * ####   Feed RSS    #### 
+ * #######################
+ */
+Route::get('/feeds', [FeedRssController::class, 'getFeeds']);
+// Route::get('/feed/{id}', [FeedRssController::class, 'massive']);
+// Route::post('/api/messages', [FeedRssController::class, 'sendMessages']);

@@ -11,18 +11,15 @@ class BaseServiceController extends Controller
 {
     /**@var string */
     private $api_url;
-
     /**@var string */
     private $api_key;
-    /**
-     * #######################
-     * ####   CONSTRUCT   ####
-     * #######################
-     */
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->api_url = env('API_URL_ZAPITO');    
         $this->api_key = env('API_KEY_ZAPITO');    
     }
+    
     /**
      * #######################
      * ####    ATTEMPT    ####
@@ -40,6 +37,7 @@ class BaseServiceController extends Controller
      */
     protected function get($endpoint)
     {
+        
         $response = $this->attempt()->get($this->getUrl($endpoint))->json();
 
         if (!empty($response)) {
@@ -66,7 +64,7 @@ class BaseServiceController extends Controller
      * ####     URL API     ####
      * #########################
      */
-    private function getUrl($endpoint)
+    protected function getUrl($endpoint)
     {
         return $this->api_url . $endpoint;
     }
