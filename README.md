@@ -2,10 +2,17 @@
 
 # Executar o projeto
 
+
 Projeto executado com o docker e docker-compose
 
 Comando: 
  docker-compose up -d
+ 
+
+
+# Acesse o container para rodar o update do composer
+docker exec -it proload_2021_zapito_app_1 bash
+composer update
 
 ### IMPORTANTE: 
 O script run_install_clean.sh, é para instalação limpa,ou seja para o Teste de avalização não é necessário sua execução.
