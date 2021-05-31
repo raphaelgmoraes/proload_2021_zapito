@@ -42,25 +42,23 @@ comando:
 # Apenas Leitura
 Comandos Laravel 7
 
-##################################
 #### BackPack Laravel comands ####
-##################################
 php artisan make:migration create_{name}_table = cria a tabela
 php artisan backpack:crud {name} = cria o crud
 
-##################################
+
 ####### Gerando Migration ########
-##################################
+
 php artisan make:migration insert_user_admin = add table user user
 
-##################################
+
 ###### Gerando Seeders ###########
-##################################
+
 php artisan make:seeder RecipientsTableSeeder
 php artisan db:seed = executa
 
-##################################
+
 ####### Gerando Factory ##########
-##################################
+
 php artisan make:seeder RecipientsTableSeeder
 php artisan db:seed --class=RecipientsTableSeeder = executa

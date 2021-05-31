@@ -18,14 +18,12 @@ class InsertRecipient extends Migration
         $last_name = "Moraes";
         $email = "raphaelmoraes@admin.com.br";
         $phone = "21996514273";
-        $msg = "Olá Teste !";
 
         DB::table('recipients')->insert([
             'first_name' => $first_name,
             'last_name' => $last_name,
             'email' => $email,
-            'phone_number' => $phone,
-            'mensagem' => $msg
+            'phone_number' => $phone
         ]);
     }
 

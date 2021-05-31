@@ -75,28 +75,33 @@ class ZapitoController extends BaseServiceController
         $recipients = Recipients::all();
         foreach ($recipients as $recipient) {
             /**
-             * ########################################
-             * ####   Msg de Teste da Plataforma   ####
-             * ########################################
+             * SOMENTE ENVIA SE USER RECIPIENT TIVER STATUS TRUE
              */
-            $data =  [
-                "data" => [
-                    [
-                        "phone" => $recipient->phone_number,
-                        "message" => "
-                            Zapito API:: Notícias do Brasil e do Mundo! \n\n \n Olá $recipient->first_name !\n\n Informe do dia:\n\n $notice \n\n Acesse: $link \n\n\n By: Raphael Moraes
-                        ",
-                            
-                        "test_mode" => true
+            if ($recipient->status) {
+            
+                /**
+                 * ########################################
+                 * ####   Msg de Teste da Plataforma   ####
+                 * ########################################
+                 */
+                $data =  [
+                    "data" => [
+                        [
+                            "phone" => $recipient->phone_number,
+                            "message" => "
+                                Zapito API:: Notícias do Brasil e do Mundo! \n\n \n Olá $recipient->first_name !\n\n Informe do dia:\n\n $notice \n\n Acesse: $link \n\n\n By: Raphael Moraes
+                            ",
+                            "test_mode" => true
+                        ]
                     ]
-                ]
-            ];
-            /**
-             *##################################################################################
-            * $data["data"][0]["error"] = false :: Informa que a msg foi efetuada com sucesso
-            * ##################################################################################
-            */
-            return $this->post($endpoint, $data);
+                ];
+                /**
+                 *##################################################################################
+                * $data["data"][0]["error"] = false :: Informa que a msg foi efetuada com sucesso
+                * ##################################################################################
+                */
+                return $this->post($endpoint, $data);
+            }
         }
     }
 

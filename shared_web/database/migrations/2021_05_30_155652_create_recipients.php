@@ -19,8 +19,7 @@ class CreateRecipients extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone_number')->unique();
-            $table->text('mensagem');
-            $table->boolean('status')->nullable()->default(false);
+            $table->boolean('active')->nullable()->default(false);
             $table->timestamps();
         });
     }
