@@ -19,7 +19,7 @@ class BaseServiceController extends Controller
      * ####   CONSTRUCT   ####
      * #######################
      */
-    function __construct() {
+    public function __construct() {
         $this->api_url = env('API_URL_ZAPITO');    
         $this->api_key = env('API_KEY_ZAPITO');    
     }
