@@ -16,8 +16,14 @@
 - chown -R www-data:www-data bootstrap/cache/;
 - chmod -R 775 storage/;
 - chmod -R 775 bootstrap/cache/;
+
 ### Copiar .env.example para .env
 - cp .env.example .env
+
+### Executa a migrete fresh
+- Dentro do container faça:
+
+- php artisan migrate:fresh
 
 ## Acesse o container para rodar o update do composer
 docker exec -it proload_2021_zapito_app_1 bash
