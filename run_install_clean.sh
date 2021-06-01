@@ -47,23 +47,23 @@ docker-compose up -d
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" 
 # echo "Acessando, instalando laravel7 e baxkpack : proload_2021_zapito_app_1 bash       "  
 # echo "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" 
-# sleep 2
-# docker exec -it proload_2021_zapito_app_1 /bin/bash -c \
+ sleep 2
+ docker exec -it proload_2021_zapito_app_1 /bin/bash -c \
 #     "sleep 2;
 #         # echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
 #         # echo 'instalação Laravel 7! :)       ';  
 #         # echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n'; 
 #         # sleep 5;
 #         # composer create-project --prefer-dist laravel/laravel ./ '7.*';
-#         php artisan key:generate;
+         php artisan key:generate;
 #         sleep 5;
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
 #         echo 'Permissão à pasta storage e bootstrap/cashe       ';  
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n'; 
-#         chown -R www-data:www-data storage/;
-#         chown -R www-data:www-data bootstrap/cache/;
-#         chmod -R 775 storage/;
-#         chmod -R 775 bootstrap/cache/;
+         chown -R www-data:www-data storage/;
+         chown -R www-data:www-data bootstrap/cache/;
+         chmod -R 775 storage/;
+         chmod -R 775 bootstrap/cache/;
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
 #         echo 'Editando arquivo .env e adicionando info do DB       ';  
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n'; 
@@ -75,12 +75,12 @@ docker-compose up -d
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
 #         echo 'Instalando o backpaxk 4.1 :)               ';  
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n'; 
-#         composer require backpack/crud:"'4.1.*'";
-#         composer require backpack/generators --dev;
-#         composer require laracasts/generators --dev;
-#         php artisan backpack:install;
-#         composer require --dev laravel-shift/blueprint;
-#         composer require guzzlehttp/guzzle;       
+         composer require backpack/crud:"'4.1.*'";
+         composer require backpack/generators --dev;
+         composer require laracasts/generators --dev;
+         php artisan backpack:install;
+         composer require --dev laravel-shift/blueprint;
+         composer require guzzlehttp/guzzle;       
         
 #         sleep 5;
 #         echo '++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++'; 
