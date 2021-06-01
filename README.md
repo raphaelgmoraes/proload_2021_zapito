@@ -52,6 +52,7 @@ Mas, para outros projetos ele instala automaticamente o Laravel versão7 e o bac
 - Referencia: https://packagist.org/packages/laravel-doctrine/migrations
 - Senão o crud nao funciona do backpack
 
+- Para o Destinatário receber mesnsagem, tem que habilitar o checkbox "ACTIVE" no cadastro de novo destinatário, ou editar e habilitar :)
 # Detalhes do Projeto
 
 ## .gitignore
