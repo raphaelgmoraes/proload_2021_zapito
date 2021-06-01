@@ -1,6 +1,6 @@
 #Para o Teste de avaliação o DB será commitado para facilitar o Teste, sem a 
 #necessidade de popular o Database, por default não subi para o Github
 .vscode
-/shared_db/
+/shared_db/*
 
 
