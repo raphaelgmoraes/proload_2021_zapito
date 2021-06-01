@@ -29,6 +29,19 @@
 docker exec -it proload_2021_zapito_app_1 bash
 composer update
 
+# Acesso FrontEnd da AplicaçãoS
+
+- Digital Ocean :: VPS
+- Link do projeto: http://134.122.38.186:8080
+- Login:admin@admin.com.br
+- Senha: 123456
+
+- AWS :: Ec2
+- Link do projeto: http://3.14.1.246:8080
+- Login: admin@admin.com.br
+- Senha: 123456
+
+
 # IMPORTANTE: 
 - O script run_install_clean.sh, é para instalação limpa,ou seja para o Teste de avalização 
 não é necessário sua execução.
