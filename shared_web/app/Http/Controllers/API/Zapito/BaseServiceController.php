@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API\Zapito;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use \App\Http\Controllers\Services\FeedRss\FeedRssController as Feed;
+
 
 use Illuminate\Support\Facades\Http;
 
@@ -51,12 +53,52 @@ class BaseServiceController extends Controller
      * ####   CURL :: POST   ####
      * ##########################
      */
-    protected function post($endpoint, $data)
+    protected function post($endpoint, $recipients)
     {
-        $response = $this->attempt()->post($this->getUrl($endpoint), $data)->json();
-        if ($response["data"][0]["error"] == false) {
-            return $response;
+        /**
+         * FEED de Notícias :: Update a cada 1 minuto
+         */
+        $feed_data = new Feed();
+        $feed = $feed_data->getFeeds();
+        $notice = $feed["title"];
+        $link = $feed["link"];
+
+        foreach ($recipients as $recipient) {
+            /**
+             * SOMENTE ENVIA SE USER RECIPIENT TIVER STATUS TRUE
+             */
+            if ($recipient->active == 1) {
+                /**
+                 * ########################################
+                 * ####   Msg de Teste da Plataforma   ####
+                 * ########################################
+                 */
+                $data =  [
+                    "data" => [
+                        [
+                            "phone" => $recipient->phone_number,
+                            "message" => "
+                                Zapito API:: Notícias do Brasil e do Mundo! \n\n \n Olá $recipient->first_name !\n\n Informe do dia:\n\n $notice \n\n Acesse: $link \n\n\n By: Raphael Moraes
+                            ",
+                            "test_mode" => true
+                        ]
+                    ]
+                ];
+                /**
+                 *##################################################################################
+                * $data["data"][0]["error"] = false :: Informa que a msg foi efetuada com sucesso
+                * ##################################################################################
+                */
+                // print_r($data);
+                $this->attempt()->post($this->getUrl($endpoint), $data)->json();
+                // var_dump($response);
+            }
         }
+       
+        
+        // if ($response["data"][0]["error"] == false) {
+        //     return $response;
+        // }
     }
 
     /**
